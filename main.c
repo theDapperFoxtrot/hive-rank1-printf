@@ -1,33 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putunbr.c                                       :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: smishos <smishos@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/07 18:10:00 by smishos           #+#    #+#             */
-/*   Updated: 2024/06/07 18:40:14 by smishos          ###   ########.fr       */
+/*   Created: 2024/06/07 14:43:03 by smishos           #+#    #+#             */
+/*   Updated: 2024/06/07 20:36:14 by smishos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include <stdio.h>
+#include <limits.h>
 
-int	ft_putunbr(unsigned int n)
+int	main(void)
 {
-	int	result;
-	int	temp;
+	int	ft_ret;
+	int	ret;
 
-	result = 0;
-	if (n >= 10)
-	{
-		temp = ft_putunbr(n / 10);
-		if (temp == -1)
-			return (-1);
-		result += temp;
-	}
-	temp = ft_putchar(n % 10 + '0');
-	if (temp == -1)
-		return (-1);
-	result += temp;
-	return (result);
+	// ft_ret = ft_printf("Hello, %s\n", "world");
+	// ret = printf("Hello, %s\n", "world");
+	ft_ret = ft_printf("\n%pp%p%p", (void *)LONG_MAX + 423856, (void *)0, (void *)INT_MAX);
+	ret = printf("\n%pp%p%p", (void *)LONG_MAX + 423856, (void *)0, (void *)INT_MAX);
+	printf("\nft_ret: %d\nret: %d\n", ft_ret, ret);
 }

@@ -6,7 +6,7 @@
 /*   By: smishos <smishos@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 16:50:59 by smishos           #+#    #+#             */
-/*   Updated: 2024/06/07 17:57:25 by smishos          ###   ########.fr       */
+/*   Updated: 2024/06/07 18:41:13 by smishos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,24 @@
 int	ft_putstr(char *str)
 {
 	int	result;
+	int	temp;
 
 	result = 0;
 	if (!str)
 	{
-		result += ft_putstr("(null)");
+		temp = ft_putstr("(null)");
+		if (temp == -1)
+			return (-1);
+		result += temp;
 	}
 	else
 	{
 		while (*str)
 		{
-			result += ft_putchar(*str);
+			temp = ft_putchar(*str);
+			if (temp == -1)
+				return (-1);
+			result += temp;
 			str++;
 		}
 	}

@@ -6,7 +6,7 @@
 /*   By: smishos <smishos@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 18:11:24 by smishos           #+#    #+#             */
-/*   Updated: 2024/06/07 18:12:03 by smishos          ###   ########.fr       */
+/*   Updated: 2024/06/07 21:06:27 by smishos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int	ft_putptr(void *ptr)
 		return (result);
 	}
 	addr = (unsigned long)ptr;
-	ft_putstr("0x");
+	if (ft_putstr("0x") == -1)
+		return (-1);
 	return (ft_puthex(addr, 'x', 1));
 }

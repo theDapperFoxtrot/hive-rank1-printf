@@ -6,31 +6,54 @@
 /*   By: smishos <smishos@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 18:00:12 by smishos           #+#    #+#             */
-/*   Updated: 2024/06/07 18:01:07 by smishos          ###   ########.fr       */
+/*   Updated: 2024/06/07 20:12:59 by smishos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putnbr(int n)
+int ft_putnbr_helper(int n)
 {
-	int	result;
+    int result = 0;
+    int temp;
 
-	result = 0;
-	if (n == -2147483648)
-	{
-		result += ft_putstr("-2147483648");
-		return (result);
-	}
-	if (n < 0)
-	{
-		result += ft_putchar('-');
-		n = -n;
-	}
-	if (n >= 10)
-	{
-		result += ft_putnbr(n / 10);
-	}
-	result += ft_putchar((n % 10) + '0');
-	return (result);
+    if (n >= 10)
+    {
+        temp = ft_putnbr_helper(n / 10);
+        if (temp == -1)
+            return (-1);
+        result += temp;
+    }
+    temp = ft_putchar((n % 10) + '0');
+    if (temp == -1)
+        return (-1);
+    result += temp;
+    return (result);
+}
+int ft_putnbr(int n)
+{
+    int result = 0;
+    int temp;
+
+    if (n == -2147483648)
+    {
+        temp = ft_putstr("-2147483648");
+        if (temp == -1)
+            return (-1);
+        result += temp;
+        return (result);
+    }
+    if (n < 0)
+    {
+        temp = ft_putchar('-');
+        if (temp == -1)
+            return (-1);
+        result += temp;
+        n = -n;
+    }
+    temp = ft_putnbr_helper(n);
+    if (temp == -1)
+        return (-1);
+    result += temp;
+    return (result);
 }
