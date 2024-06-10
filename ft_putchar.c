@@ -6,7 +6,7 @@
 /*   By: smishos <smishos@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 16:40:20 by smishos           #+#    #+#             */
-/*   Updated: 2024/06/07 18:15:21 by smishos          ###   ########.fr       */
+/*   Updated: 2024/06/10 13:33:40 by smishos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int	ft_putchar(char c)
 {
-	//I want to either return the number of bytes written or -1 if an error occurs
 	if (write(1, &c, 1) == -1)
 		return (-1);
 	return (1);
